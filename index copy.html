@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="workspace">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><i class="icon-home"></i> Home</li>
+                <li><i class="icon-settings"></i> Settings</li>
+                <li><i class="icon-help"></i> Help</li>
+            </ul>
+        </div>
+        <div class="content">
+            <header>
+                <h1>Dashboard</h1>
+                <nav>
+                    <button class="active">Overview</button>
+                    <button>Reports</button>
+                    <button>Analytics</button>
+                </nav>
+            </header>
+            <div class="task">
+                <h2>Tasks</h2>
+                <!-- Task content here -->
+            </div>
+            <div class="database-menu">
+                <div class="database">
+                    <h2>Database</h2>
+                    <!-- Database content here -->
+                </div>
+                <div class="menu">
+                    <h2>Menu Section</h2>
+                    <!-- Menu content here -->
+                </div>
+            </div>
+            <div class="landing">
+                <!-- Landing content here -->
+                <h2>Welcome to Your Dashboard!</h2>
+                <p>This is your landing section where you can find important information.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example of a table for tasks -->
+    <table class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Project</th>
+                    <th>Client</th>
+                    <th>Archive</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Task 1</td>
+                    <td>7 September 2023</td>
+                    <td><span class="status not-started">Not Started</span></td>
+                    <td>Develop a responsive website</td>
+                    <td>Client 1</td>
+                    <td><button>Archive</button></td>
+                </tr>
+                <!-- Add more tasks as needed -->
+            </tbody>
+        </table>
+    </table>
+
+</body>
+</html>

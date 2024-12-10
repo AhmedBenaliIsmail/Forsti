@@ -1,165 +1,557 @@
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.container {
-    width: 80%;
+    background-color: #f9f9f9;
+    display: flex;
+    color: #444;
+  }
+  
+  .container {
+    max-width: 1200px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.comment-section {
-    margin-top: 20px;
-}
-
-.comment-form textarea {
+  }
+  
+  /* Workspace Layout */
+  .workspace {
+    display: flex;
     width: 100%;
-    height: 80px;
+    height: 100vh;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 240px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    position: fixed;
+  }
+  
+  .sidebar h2 {
+    font-size: 1.5rem;
+    color: #2d4f6c;
+    border-bottom: 2px solid #f0f3f8;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    transition: background-color 0.3s, padding-left 0.3s;
+  }
+  
+  .sidebar ul li i {
+    color: #4a90e2;
+    margin-right: 10px;
+  }
+  
+  .sidebar ul li:hover {
+    background-color: #f5faff;
+    padding-left: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Main Content */
+  .content {
+    margin-left: 260px;
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  h1 {
+    font-size: 28px;
+    color: #333;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    color: #2d4f6c;
+    font-weight: bold;
+  }
+  
+  /* Button Styling */
+  header nav button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  header nav button:hover {
+    background-color: #0056b3;
+  }
+  
+  header nav button.active {
+    background-color: #0056b3;
+  }
+  
+  /* Table Styles */
+  .table-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  .table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+  
+  .table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .table td input[type="checkbox"] {
+    cursor: pointer;
+  }
+  
+  /* Status Labels for Tasks */
+  .status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .status.not-started {
+    background-color: #ff6b6b;
+  }
+  
+  .status.in-progress {
+    background-color: #ffa502;
+  }
+  
+  .status.completed {
+    background-color: #2ed573;
+  }
+  
+  /* Grid System for the Dashboard */
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1.1fr 1.1fr;
+    grid-template-rows: auto 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    grid-template-areas:
+      "nav nav nav nav nav nav"
+      "clock clock clock clock clock clock"
+      "task task task task task task"
+      "database database database database project project"
+      "database database database database project project"
+      "calendar calendar calendar calendar calendar calendar";
+  }
+  
+  /* Navigation Section */
+  .nav {
+    grid-area: nav;
+    background-color: #f8f9fa;
     padding: 10px;
-    margin-bottom: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.comment-form button {
-    padding: 10px 20px;
+  }
+  
+  .nav h1 {
+    font-size: 1.5rem;
+  }
+  
+  /* Clock Section */
+  .clock {
+    grid-area: clock;
+    background-color: #e9ecef;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .time {
+    font-size: 2rem;
+  }
+  
+  .day {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Task Section */
+  .task {
+    grid-area: task;
+    background-color: #dee2e6;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .task h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .list-group-item {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .task-status.not-started {
+    color: #dc3545;
+  }
+  
+  .task-status.in-progress {
+    color: #ffc107;
+  }
+  
+  .task-status.completed {
+    color: #28a745;
+  }
+  
+  .quick-task-maker input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .quick-task-maker button {
+    width: 18%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+  }
+  
+  .quick-task-maker button:hover {
+    background-color: #218838;
+  }
+  
+  /* Database Section */
+  .database {
+    grid-area: database;
+    background-color: #f1f3f5;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .database h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Project Section */
+  .project {
+    grid-area: project;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .project h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Kanban Board Layout */
+  .kanban-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .kanban-column {
+    background-color: #f1f3f5;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .kanban-column h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .project-card {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+  
+  .project-card .description {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .project-card .details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .project-card .due-date {
+    color: #17a2b8;
+  }
+  
+  .project-card .priority {
+    font-weight: bold;
+    color: #dc3545;
+  }
+  
+  .project-card button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+  }
+  
+  .project-card button:hover {
+    background-color: #218838;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .kanban-board {
+      grid-template-columns: 1fr 1fr;
+    }
+    .container {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .task-table {
+      font-size: 12px;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .kanban-board {
+      grid-template-columns: 1fr;
+    }
+    .task-table {
+      font-size: 10px;
+    }
+  }
+  
+  /* Meetings Section - Notion-style */
+  .meetings-section {
+    
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Meeting Card */
+  .meeting-card {
+    
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .meeting-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Meeting Header */
+  .meeting-card .header {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  /* Meeting Description */
+  .meeting-card .description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  
+  /* Meeting Details */
+  .meeting-card .details {
+    font-size: 0.9rem;
+    color: #777;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Date and Time */
+  .meeting-card .date-time {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  /* Status */
+  .meeting-card .status {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: #4caf50;
+    font-weight: 600;
+  }
+  
+  /* Meetings Section Header */
+  .meetings-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #2d4f6c;
+  }
+  
+  /* Calendar Styles */
+  .meetings-section {
+    margin-top: 30px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .calendar-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .calendar-btn {
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
+    padding: 10px 15px;
     cursor: pointer;
-}
-
-.comment-form button:hover {
+    border-radius: 5px;
+  }
+  
+  .calendar-btn:hover {
     background-color: #45a049;
-}
-
-.comment {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-}
-
-comment p {
-    margin: 0;
-}
-
-comment span {
-    font-size: 0.8em;
-    color: #888;
-}
-/* Style général de la page */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Container de la page */
-.container {
-    width: 100%;
-    max-width: 500px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-/* Container du formulaire */
-.form-container {
-    text-align: center;
-}
-
-/* Titre du formulaire */
-.form-container h1 {
-    color: #1877f2;
+  }
+  
+  #month-title {
     font-size: 24px;
-    margin-bottom: 20px;
-}
-
-/* Style pour chaque groupe de champ */
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-/* Labels */
-label {
-    display: block;
+    margin: 0;
+    color: #333;
+  }
+  
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    padding: 15px;
+  }
+  
+  /* Days of the Week */
+  .day-name {
     font-weight: bold;
-    margin-bottom: 5px;
-}
-
-/* Champs de saisie */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="date"] {
-    width: 100%;
     padding: 10px;
-    border-radius: 5px;
+    background-color: #f4f4f4;
+    color: #666;
+  }
+  
+  /* Day Cell Styles */
+  .day {
+    padding: 15px;
     border: 1px solid #ddd;
-    box-sizing: border-box;
-}
-
-input[type="radio"] {
-    margin-right: 5px;
-}
-
-/* Groupe des sexes */
-.gender-group {
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-/* Actions du formulaire */
-.form-actions {
-    margin-top: 20px;
-}
-
-/* Bouton de soumission */
-.submit-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #42b72a;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    position: relative;
     cursor: pointer;
-}
-
-.submit-btn:hover {
-    background-color: #36a420;
-}
-
-/* Lien pour se connecter */
-.login-link {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.login-link a {
-    color: #1877f2;
-    text-decoration: none;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
-}
+  }
+  
+  .day:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .empty {
+    background-color: #fff;
+    border: none;
+  }
+  
+  .event {
+    background: #0078d4;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 5px;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  

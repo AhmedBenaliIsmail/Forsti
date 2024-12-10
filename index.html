@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notion-Inspired Workspace</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation Section -->
+    <div class="nav">
+      <header class="d-flex justify-content-between align-items-center py-3">
+        <h1>Notion Freelance</h1>
+        <div class="actions">
+          <button class="btn btn-primary" id="addProjectBtn">Add Project</button>
+          <button class="btn btn-secondary" id="addMeetingBtn">Add Meeting</button>
+        </div>
+      </header>
+    </div>
+
+    <!-- Clock Section -->
+    <div class="clock">
+      <div class="time display-4" id="clock">00:00</div>
+      <div class="day text-uppercase" id="day">SUNDAY</div>
+    </div>
+
+    <!-- Tasks Section -->
+    <section class="task">
+      <h2>Tasks</h2>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="task-name"><i class="fas fa-tasks"></i> New Task</span>
+          <span class="task-status not-started"><i class="fas fa-hourglass-start"></i> Not Started</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="task-name"><i class="fas fa-tasks"></i> Second Task</span>
+          <span class="task-status in-progress"><i class="fas fa-spinner"></i> In Progress</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="task-name"><i class="fas fa-tasks"></i> Third Task</span>
+          <span class="task-status completed"><i class="fas fa-check-circle"></i> Completed</span>
+        </li>
+      </ul>
+      <div class="quick-task-maker d-flex mt-4">
+        <input type="text" class="form-control" id="taskName" placeholder="Quick Task Name">
+        <button id="addQuickTask" class="btn btn-success ms-2"><i class="fas fa-plus-circle"></i> Add Quick Task</button>
+      </div>
+    </section>
+
+    <!-- Database Section -->
+    <div class="database">
+      <h2>Databases</h2>
+      <ul class="list-group">
+        <li class="list-group-item" id="projectsBtn"><i class="fas fa-folder"></i> Projects</li>
+        <li class="list-group-item" id="tasksBtn"><i class="fas fa-tasks"></i> Tasks</li>
+        <li class="list-group-item" id="meetingsBtn"><i class="fas fa-calendar"></i> Meetings</li>
+        <li class="list-group-item" id="servicesBtn"><i class="fas fa-concierge-bell"></i> Services</li>
+        <li class="list-group-item" id="resourcesBtn"><i class="fas fa-book"></i> Resources</li>
+        <li class="list-group-item" id="clientsBtn"><i class="fas fa-users"></i> Clients</li>
+        <li class="list-group-item" id="archiveBtn"><i class="fas fa-archive"></i> Archive</li>
+      </ul>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="project" id="projectsSection" style="display: none;">
+      <button id="tasksBtnBack" class="btn btn-secondary">Back to Tasks</button>
+      <h2>Projects</h2>
+      <div class="kanban-board" id="projectKanban">
+        <div class="kanban-column" id="todo">
+          <h3>To Do</h3>
+          <div class="project-card">
+            <h4>Project 1</h4>
+            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="details">
+              <span class="due-date">Due: 20 Dec</span>
+              <span class="priority">Priority: High</span>
+            </div>
+            <button class="btn btn-primary">View Project</button>
+          </div>
+          <div class="project-card">
+            <h4>Project 2</h4>
+            <p class="description">Nulla facilisi. Vivamus interdum sapien et ante suscipit.</p>
+            <div class="details">
+              <span class="due-date">Due: 15 Dec</span>
+              <span class="priority">Priority: Medium</span>
+            </div>
+            <button class="btn btn-primary">View Project</button>
+          </div>
+        </div>
+        <div class="kanban-column" id="in-progress">
+          <h3>In Progress</h3>
+          <div class="project-card">
+            <h4>Project 3</h4>
+            <p class="description">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere.</p>
+            <div class="details">
+              <span class="due-date">Due: 10 Dec</span>
+              <span class="priority">Priority: Low</span>
+            </div>
+            <button class="btn btn-primary">View Project</button>
+          </div>
+        </div>
+        <div class="kanban-column" id="completed">
+          <h3>Completed</h3>
+          <div class="project-card">
+            <h4>Project 4</h4>
+            <p class="description">Curabitur ullamcorper erat id malesuada condimentum.</p>
+            <div class="details">
+              <span class="due-date">Completed: 01 Dec</span>
+              <span class="priority">Priority: Low</span>
+            </div>
+            <button class="btn btn-primary">View Project</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Meetings Section -->
+<div class="meetings-section">
+  <h2 class="section-title">Meetings</h2>
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button id="prev-month" class="calendar-btn">◀</button>
+      <h2 id="month-title">December 2024</h2>
+      <button id="next-month" class="calendar-btn">▶</button>
+    </div>
+    <div class="calendar">
+      <!-- Calendar days will be dynamically generated here -->
+    </div>
+  </div>
+</div>
+
+ <!-- Task Table -->
+  <table class="task-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Task Name</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Project</th>
+        <th>Client</th>
+        <th>Archive</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Example Rows -->
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>Task 1</td>
+        <td>7 September 2023</td>
+        <td><span class="status not-started">Not Started</span></td>
+        <td>Develop a responsive website</td>
+        <td>Client 1</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>Task 2</td>
+        <td>8 September 2023</td>
+        <td><span class="status in-progress">In Progress</span></td>
+        <td>Develop a responsive website</td>
+        <td>Client 1</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>Task 3</td>
+        <td>11 September 2023</td>
+        <td><span class="status completed">Completed</span></td>
+        <td>Create a modern logo</td>
+        <td>Client 2</td>
+        <td><input type="checkbox"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    <!-- Clients Section -->
+    <div class="content" id="clientsSection" style="display: none;">
+      <h2>Clients</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <h4>Client 1</h4>
+          <p>Email: client1@example.com</p>
+          <p>Status: Active</p>
+        </li>
+        <li class="list-group-item">
+          <h4>Client 2</h4>
+          <p>Email: client2@example.com</p>
+          <p>Status: Inactive</p>
+        </li>
+      </ul>
+      <button id="backToDatabaseClientsBtn" class="btn btn-secondary mt-3">Back to Database</button>
+    </div>
+
+    <!-- Finances Section -->
+    <div class="content" id="financesSection" style="display: none;">
+      <h2>Finances</h2>
+      <div class="finance-table">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Transaction</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="income">
+              <td><i class="fas fa-dollar-sign"></i> Payment from Client 1</td>
+              <td>Web Development</td>
+              <td>$1500</td>
+              <td>10 Sep 2023</td>
+              <td><span class="status paid"><i class="fas fa-check-circle"></i> Paid</span></td>
+              <td><button class="view-btn btn btn-info">View</button></td>
+            </tr>
+            <tr class="expense">
+              <td><i class="fas fa-tools"></i> Software Subscription</td>
+              <td>Tools</td>
+              <td>-$100</td>
+              <td>12 Sep 2023</td>
+              <td><span class="status unpaid"><i class="fas fa-times-circle"></i> Unpaid</span></td>
+              <td><button class="view-btn btn btn-info">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Archive Section -->
+    <div class="archive" id="archiveSection" style="display: none;">
+      <h2>Archive</h2>
+      <p>All archived projects and files will be listed here.</p>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js.js"></script>
+</body>
+</html>

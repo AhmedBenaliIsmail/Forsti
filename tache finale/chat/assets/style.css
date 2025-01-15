@@ -1,0 +1,484 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Root Variables */
+:root {
+    --c-gray-900: #2b2b2b;
+    --c-gray-800: #3c3c3c;
+    --c-gray-700: #4d4d4d;
+    --c-gray-600: #5e5e5e;
+    --c-gray-500: #707070;
+    --c-gray-400: #a1a1a1;
+    --c-gray-300: #d4d4d4;
+    --c-gray-200: #e9e9e9;
+    --c-gray-100: #f3f3f3;
+    --c-blue-light: #bcedf6;
+    --c-green-light: #ddfbd2;
+    --c-white: var(--c-gray-100);
+    --c-text-primary: var(--c-gray-900);
+    --c-text-secondary: var(--c-gray-600);
+    --c-text-tertiary: var(--c-gray-500);
+    --c-card-bg: #ffebcd;
+    --c-card-border: #ffa07a;
+    --c-card-icon: #ff4500;
+    --c-card-hover-bg: #f5deb3;
+    --c-table-header-bg: #007BFF;
+    --c-table-header-text: rgb(244, 247, 248);
+    --c-table-row-hover: #f1f1f1;
+    --c-table-striped-bg: #a8f9a3;
+}
+
+/* Reset CSS */
+* {
+    margin-left:%;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    line-height: 1.5;
+    min-height: 90vh;
+    font-family: "Be Vietnam Pro", sans-serif;
+    background: linear-gradient(135deg, var(--c-gray-100), var(--c-blue-light));
+    color: var(--c-text-primary);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Universal Styles */
+img {
+    display: block;
+    max-width: 90%;
+}
+
+button, select, input, textarea {
+    font: inherit;
+}
+
+a {
+    color:#12549a;
+    text-decoration: none;
+}
+
+/* App Container */
+.app {
+    width: 100%;
+    background: linear-gradient(135deg, var(--c-gray-200), var(--c-blue-light));
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Header */
+.app-header {
+    display: grid;
+    grid-template-columns: minmax(min-content, 175px) 1fr minmax(max-content, 400px);
+    column-gap: 4rem;
+    align-items: flex-end;
+    padding: 1rem 2rem;
+}
+
+.app-header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.app-header .logo-icon img {
+    width: 32px;
+    height: 32px;
+}
+
+.app-header .logo-title {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.75rem;
+    line-height: 1.25;
+}
+
+.app-header .logo-title span:first-child {
+    color: var(--c-text-primary);
+}
+
+.app-header .logo-title span:last-child {
+    color: var(--c-text-tertiary);
+}
+
+.app-header-navigation {
+    display: flex;
+}
+
+.app-header-navigation .tabs {
+    display: flex;
+    gap: 1rem;
+}
+
+.app-header-navigation .tabs a {
+    padding: 1rem;
+    border-top: 2px solid transparent;
+    transition: 0.25s ease;
+}
+
+.app-header-navigation .tabs a.active,
+.app-header-navigation .tabs a:hover,
+.app-header-navigation .tabs a:focus {
+    color: var(--c-text-primary);
+    border-color: var(--c-text-primary);
+}
+
+.app-header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.app-header-actions .user-profile {
+    display: flex;
+    align-items: center;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: var(--c-text-tertiary);
+    transition: 0.25s ease;
+}
+
+.app-header-actions .user-profile:hover,
+.app-header-actions .user-profile:focus {
+    color: var(--c-text-primary);
+}
+
+.app-header-actions .user-profile span {
+    display: flex;
+    padding: 1rem;
+    font-size: 1.125rem;
+    border-bottom: 1px solid var(--c-gray-400);
+    font-weight: 300;
+}
+
+.app-header-actions .user-profile span:last-child {
+    margin-left: 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 42px;
+    height: 42px;
+    transition: 0.25s ease;
+}
+
+.app-header-actions .icon-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--c-gray-500);
+    background: transparent;
+    color: var(--c-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.25s ease;
+    margin-left: 1rem;
+}
+
+.app-header-actions .icon-button.large {
+    width: 42px;
+    height: 42px;
+    font-size: 1.25em;
+}
+
+.app-header-actions .icon-button:hover,
+.app-header-actions .icon-button:focus {
+    background-color: var(--c-gray-400);
+    box-shadow: 0 0 0 4px var(--c-gray-200), 0 0 0 5px var(--c-text-tertiary);
+}
+
+.app-header-mobile {
+    display: none;
+}
+
+/* Body */
+.app-body {
+    display: grid;
+    grid-template-columns: minmax(min-content, 175px) 1fr;
+    column-gap: 4rem;
+    padding: 2.5rem;
+    flex-grow: 1;
+}
+
+.app-body-navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.navigation a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.25s ease;
+    color: var(--c-text-tertiary);
+}
+
+.navigation a i {
+    margin-right: 0.75rem;
+    font-size: 1.25em;
+    flex-shrink: 0;
+}
+
+.navigation a + a {
+    margin-top: 1.25rem;
+}
+
+.navigation a:hover,
+.navigation a:focus {
+    transform: translateX(4px);
+    color: var(--c-text-primary);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: var(--c-blue-light);
+    color: var(--c-purple-medium);
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer h1 {
+    font-size: 1.5rem;
+    line-height: 1.125;
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer h1 small {
+    font-size: 0.5em;
+    margin-left: 0.25em;
+}
+
+.footer div {
+    border-top: 1px solid var(--c-gray-400);
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--c-text-tertiary);
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Advanced Table Styles */
+table.styled-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 25px 0;
+    font-size: 1em;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: var(--c-white);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table.styled-table thead tr {
+    background-color: var(--c-table-header-bg);
+    color: var(--c-table-header-text);
+    text-align: left;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+table.styled-table th,
+table.styled-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--c-gray-300);
+}
+
+table.styled-table tbody tr {
+    border-bottom: 1px solid var(--c-gray-300);
+}
+
+table.styled-table tbody tr:nth-of-type(even) {
+    background-color: var(--c-table-striped-bg);
+}
+
+table.styled-table tbody tr:hover {
+    background-color: var(--c-table-row-hover);
+}
+
+table.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: var(--c-table-header-bg);
+}
+
+/* Ensure the table fits within the container */
+.container {
+    overflow-x: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table.styled-table thead {
+        display: none;
+    }
+
+    table.styled-table, table.styled-table tbody, table.styled-table tr, table.styled-table td {
+        display: block;
+        width: 100%;
+    }
+
+    table.styled-table tr {
+        margin-bottom: 15px;
+    }
+
+    table.styled-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table.styled-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+/* Form Styles */
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(55, 27, 210, 0.1);
+    background: linear-gradient(135deg, #f3f3f3, #e9e9ff);
+}
+
+form label {
+    font-weight: bold;
+    color: #130c4d;
+}
+
+form input, form textarea, form select {
+    padding: 15px;
+    font-size: 1em;
+    border: 1px solid var(--c-gray-300);
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    border-color: #130c4d;
+    box-shadow: 0 0 5px rgba(19, 12, 77, 0.3);
+    outline: none;
+}
+
+form button, form input[type="submit"] {
+    background: linear-gradient(135deg, #DDFBD2, #bcedf6);
+    color: #130c4d;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover, form input[type="submit"]:hover {
+    background: linear-gradient(135deg, #46abd6, #35a0c9);
+    transform: translateY(-2px);
+}
+
+form button:active, form input[type="submit"]:active {
+    transform: translateY(0);
+}
+/* Table Styles */
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(55, 27, 210, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+table th {
+    background: linear-gradient(135deg, #DDFBD2, #bcedf6);
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #e0f7fa;
+    color: var(--c-text-primary);
+}
+
+table tbody tr.active-row {
+    font-weight: bold;
+    color: var(--c-table-header-bg);
+}
+
+/* Ensure the table fits within the container */
+.container {
+    overflow-x: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table thead {
+        display: none;
+    }
+
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+    }
+
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+}

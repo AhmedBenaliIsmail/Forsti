@@ -48,13 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
           userList.innerHTML = ""; // Clear existing list
           users.forEach((user) => {
             const li = document.createElement("li");
-            li.textContent = user.username;
+            li.textContent = user.FullName;
             li.addEventListener("click", () => {
               userList
                 .querySelectorAll("li")
                 .forEach((el) => el.classList.remove("active"));
               li.classList.add("active");
-              receiverId = user.user_id;
+              receiverId = user.id_registration;
               loadMessages();
             });
             userList.appendChild(li);
@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     )
       .then((response) => {
         const result = response.json();
-        console.log(result)
         return result;
       })
       .then((messages) => {

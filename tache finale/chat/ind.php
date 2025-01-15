@@ -1,8 +1,10 @@
 <?php
 
-require_once __DIR__ . '/app/Controllers/ChatController.php';
-require_once __DIR__ . '/app/Models/ChatModel.php';
+// Autoload dependencies or manually include required files
+require_once __DIR__ . '/Controllers/ChatController.php';
+require_once __DIR__ . '/Models/ChatModel.php';
 
+// Use the controller to handle requests
 use App\Controllers\ChatController;
 
 // Set content type for API responses
@@ -26,6 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
                 $controller->getMessages();
                 break;
 
+            case 'sendMessage':
+                $controller->sendMessage();
+                break;
+
             default:
                 http_response_code(404);
                 echo json_encode(['error' => 'Invalid action specified.']);
@@ -39,39 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
 
     exit; // Stop further processing for API requests
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    header('Content-Type: application/json');
-    
-    // Get JSON data
-    $json = file_get_contents('php://input');
-    $data = json_decode($json, true);
-    
-    try {
-        $controller = new ChatController();
-        $result = $controller->sendMessage(
-            $data['senderId'], 
-            $data['receiverId'], 
-            $data['message']
-        );
-        echo $result; // The response is already JSON encoded in the controller
-    } catch (Exception $e) {
-        http_response_code(500);
-        echo json_encode(['error' => $e->getMessage()]);
-    }
-    exit;
-}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelance Offers</title>
-    <link rel="stylesheet" type="text/css" href="assets/style.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Chat App</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -81,12 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             flex-direction: column;
             height: 100vh;
         }
-
         #chatApp {
             display: flex;
             height: 100%;
         }
-
         #userList {
             width: 25%;
             border-right: 1px solid #ccc;
@@ -95,16 +75,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin: 0;
             overflow-y: auto;
         }
-
         #userList li {
             padding: 10px;
             cursor: pointer;
         }
-
         #userList li.active {
             background-color: #ddd;
         }
-
         #messagesContainer {
             flex: 1;
             padding: 10px;
@@ -112,30 +89,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             flex-direction: column;
             overflow-y: auto;
         }
-
         #messagesContainer .message {
             margin: 5px 0;
             padding: 10px;
             border-radius: 5px;
             max-width: 70%;
         }
-
         .sent {
             background-color: #e1ffc7;
             align-self: flex-end;
         }
-
         .received {
             background-color: #f1f1f1;
             align-self: flex-start;
         }
-
         #chatInput {
             display: flex;
             border-top: 1px solid #ccc;
             padding: 10px;
         }
-
         #messageInput {
             flex: 1;
             padding: 10px;
@@ -143,7 +115,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border-radius: 5px;
             margin-right: 10px;
         }
-
         #sendBtn {
             padding: 10px;
             border: none;
@@ -152,46 +123,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border-radius: 5px;
             cursor: pointer;
         }
-
         #sendBtn:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
-
 <body>
-<header class="app-header">
-        <div class="app-header-logo">
-            <div class="logo">
-                <span class="logo-icon">
-                    <img src="https://assets.codepen.io/285131/almeria-logo.svg" />
-                </span>
-                <h1 class="logo-title">
-                    <span>Forsti</span>
-                    <span>Chat</span>
-                </h1>
-            </div>
-        </div>
-        <div class="app-header-navigation">
-            <div class="tabs">
-                <a href="?action=listOffers" class="<?= $action === 'listOffers' ? 'active' : '' ?>">Home</a>
-                <a href="?action=showPostForm" class="<?= $action === 'showPostForm' ? 'active' : '' ?>">Job posting</a>
-                <a href="../workspace">Workspace</a>
-                <a class="active">Chat</a>
-                <a href="../statistics" >Dashboard</a>
-                <a href="../profile" >Profile</a>
-
-
-            </div>
-        </div>
-        
-        
-        <div class="app-header-mobile">
-            <button class="icon-button large">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
     <div id="chatApp">
         <ul id="userList"></ul>
         <div id="messagesContainer"></div>
@@ -200,13 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="messageInput" placeholder="Type a message...">
         <button id="sendBtn">Send</button>
     </div>
-    <footer class="footer">
-                <h1><small></small></h1>
-                <div>
-                    FORSTI ©<br />
-                    All Rights Reserved 2025
-                </div>
-            </footer>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const sendButton = document.getElementById("sendBtn");
@@ -275,27 +205,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     return;
                 }
 
-                const formData = ({
+                const formData = new URLSearchParams({
+                    action: "sendMessage",
                     senderId: senderId,
                     receiverId: receiverId,
                     message: messageText,
                 });
-                console.log(JSON.stringify(formData))
-                fetch("index.php", {
+
+                fetch("?", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(formData),
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: formData.toString(),
                 })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok ' + response.statusText);
-                        }
-                        return response.json();
-                    })
-                    .then((res) => {
-                        console.log(res);
+                    .then((response) => response.json())
+                    .then(() => {
                         loadMessages();
                     })
                     .catch((error) => displayError("Failed to send message: " + error));
@@ -323,5 +246,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
     </script>
 </body>
-
 </html>

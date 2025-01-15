@@ -12,7 +12,6 @@
 
 
 .sidebar {
-    cursor: pointer;
     border-radius: 30px 0 0 30px;  
     width: 300px;
     background-color: #6B7FD7;
@@ -23,7 +22,6 @@
 }
 
 .user-list {
-    cursor: pointer;
     border-radius: 10px;
     width: 100%;
     padding: 20px;
@@ -31,31 +29,26 @@
     border-right: 2px solid #ddd;
 }
 .user-list h3 {
-    cursor: pointer;
     margin-top: 0;
     font-size: 18px;
 }
 
 .user-list ul {
-    cursor: pointer;
     list-style: none;
     padding: 0;
 }
 
 .user-list ul li {
-    cursor: pointer;
     padding: 10px;
     cursor: pointer;
     border-bottom: 1px solid #ddd;
 }
 
 .user-list ul li:hover {
-    cursor: pointer;
     background-color: #eee;
 }
 
 .user-list ul li.active {
-    cursor: pointer;
     background-color: #ddd;
 }
 .user-item {
@@ -100,14 +93,14 @@
     flex: 1;
     padding: 10px;
     overflow-y: auto;
-    background-color: #fff;
+    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 10px;
 }
 
 .message {
-    display:inline-block;
+    display: inline-block;
     padding: 10px 15px;
     border-radius: 15px;
     max-width: 70%;

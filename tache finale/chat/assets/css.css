@@ -1,0 +1,239 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f7f3f3;
+    color: #333;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #6B7FD7;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #DDFBD2;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button, input[type="submit"] {
+    background: #4C2A85;
+    color: #BCEDF6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+    background: #46abd6;
+}
+
+a {
+    color: #4C2A85;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input, form textarea {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #36066d;
+    border-radius: 5px;
+}
+
+/* Offer List */
+.offer {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.offer h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.offer p {
+    margin: 5px 0;
+}
+
+.offer form {
+    margin-top: 10px;
+}
+
+/* el background eli ne7eb nbadalha  */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:linear-gradient(135deg, #ddfbd2, #bcedf6)
+    color: #320E3B;
+}
+
+header {
+    background-color: #BCEDF6;
+    color: rgb(237, 227, 227);
+    padding: 15px 20px;
+    text-align: center;
+   
+    text-align: center;
+    }
+    
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #4C2A85;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #BCEDF6;
+    color: #4C2A85;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+/* Main Content Layout */
+.main-content {
+   display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background: rgb(232, 234, 232);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 1000px;
+    margin: auto;
+    
+    
+}
+
+.form-container {
+    flex: 1;
+    max-width: 500%;
+    padding-right: 20px;
+}
+
+.form-image {
+    flex: 5;
+    text-align: center;
+    max-width: 500%;
+}
+;
+.form-image img {
+    max-width: 1000%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+table thead tr {
+    background-color: #007BFF;
+    color: rgb(244, 247, 248);
+    text-align: center;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #a8f9a3;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+table th {
+    text-transform: uppercase;
+}
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #6B7FD7;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
